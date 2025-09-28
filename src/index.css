@@ -129,15 +129,15 @@
 @layer components {
   /* Premium Button Variants */
   .btn-hero {
-    @apply bg-gradient-to-r from-accent to-accent-light text-accent-foreground px-8 py-4 rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300;
+    @apply bg-gradient-to-r from-accent to-accent-light text-accent-foreground px-8 py-4 rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 hover:-translate-y-0.5 transition-all duration-300;
   }
   
   .btn-primary {
-    @apply bg-gradient-to-r from-primary to-primary-light text-primary-foreground px-6 py-3 rounded-lg font-medium hover:shadow-lg transform hover:scale-[1.02] transition-all duration-300;
+    @apply bg-gradient-to-r from-primary to-primary-light text-primary-foreground px-6 py-3 rounded-lg font-medium hover:shadow-lg transform hover:scale-[1.02] hover:-translate-y-0.5 transition-all duration-300;
   }
   
   .btn-secondary {
-    @apply bg-secondary text-secondary-foreground px-6 py-3 rounded-lg font-medium border border-border hover:bg-secondary-dark hover:shadow-md transition-all duration-300;
+    @apply bg-secondary text-secondary-foreground px-6 py-3 rounded-lg font-medium border border-border hover:bg-secondary-dark hover:shadow-md hover:-translate-y-0.5 transition-all duration-300;
   }
 
   /* Card Variants */

@@ -4,6 +4,7 @@ import { Search, Star, Shield, Truck, Globe, ArrowRight, Play, Check } from "luc
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import HeroSlider from "@/components/HeroSlider";
 
 export default function HomePage() {
   const [email, setEmail] = useState("");
@@ -101,60 +102,49 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="hero-gradient text-primary-foreground relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20" />
-        <div className="container mx-auto px-4 py-20 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <Badge className="bg-accent/20 text-accent-foreground border-accent/30 mb-6 px-4 py-2">
-              🎉 Grand Opening Sale - Up to 50% Off
-            </Badge>
-            
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight">
-              Discover Premium Products from{" "}
-              <span className="text-accent">Trusted Sellers</span> Worldwide
-            </h1>
-            
-            <p className="text-lg md:text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Shop with confidence on our secure global marketplace. Verified reviews, 
-              premium quality, and fast worldwide shipping guaranteed.
-            </p>
-
-            {/* Hero Search */}
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 mb-8 max-w-2xl mx-auto">
-              <div className="relative">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/70 w-6 h-6" />
-                <Input
-                  placeholder="Search for products, brands, or categories..."
-                  className="pl-14 pr-32 py-4 text-lg bg-white text-gray-900 border-0 rounded-xl"
-                />
+      <section className="py-8 bg-gradient-card">
+        <div className="container mx-auto px-4">
+          <HeroSlider />
+          
+          {/* Hero Search */}
+          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 mt-8 max-w-2xl mx-auto">
+            <div className="relative">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-primary/70 w-6 h-6" />
+              <Input
+                placeholder="Search for products, brands, or categories..."
+                className="pl-14 pr-32 py-4 text-lg bg-white text-gray-900 border-0 rounded-xl"
+              />
+              <Link to="/shop">
                 <Button className="absolute right-2 top-1/2 transform -translate-y-1/2 btn-hero">
                   Search Now
                 </Button>
-              </div>
+              </Link>
             </div>
+          </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-6">
+            <Link to="/shop">
               <Button className="btn-hero text-lg px-8 py-4">
                 Start Shopping <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
-              <Button variant="ghost" className="text-white border-white/30 hover:bg-white/10 text-lg px-8 py-4">
-                <Play className="mr-2 w-5 h-5" /> Watch Demo
-              </Button>
-            </div>
+            </Link>
+            <Button variant="ghost" className="text-primary border-primary/30 hover:bg-primary/10 text-lg px-8 py-4">
+              <Play className="mr-2 w-5 h-5" /> Watch Demo
+            </Button>
+          </div>
 
-            {/* Trust Indicators */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 max-w-2xl mx-auto">
-              {trustStats.map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-2xl md:text-3xl font-bold text-accent mb-1">
-                    {stat.number}
-                  </div>
-                  <div className="text-sm text-primary-foreground/80">
-                    {stat.label}
-                  </div>
+          {/* Trust Indicators */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 max-w-2xl mx-auto">
+            {trustStats.map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="text-2xl md:text-3xl font-bold text-accent mb-1">
+                  {stat.number}
                 </div>
-              ))}
-            </div>
+                <div className="text-sm text-muted-foreground">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -188,9 +178,11 @@ export default function HomePage() {
           </div>
 
           <div className="text-center mt-10">
-            <Button className="btn-secondary">
-              View All Categories <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
+            <Link to="/shop">
+              <Button className="btn-secondary">
+                View All Categories <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -263,9 +255,11 @@ export default function HomePage() {
                     </span>
                   </div>
                   
-                  <Button className="w-full btn-primary">
-                    Add to Cart
-                  </Button>
+                  <Link to="/product/1">
+                    <Button className="w-full btn-primary">
+                      View Details
+                    </Button>
+                  </Link>
                 </div>
               </div>
             ))}
@@ -394,7 +388,7 @@ export default function HomePage() {
               onChange={(e) => setEmail(e.target.value)}
               className="flex-1 bg-white/10 border-white/20 text-white placeholder:text-white/70"
             />
-            <Button className="bg-accent hover:bg-accent-light text-accent-foreground px-6">
+            <Button className="bg-accent hover:bg-accent/90 text-accent-foreground px-6">
               Subscribe
             </Button>
           </div>

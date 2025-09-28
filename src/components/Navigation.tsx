@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Search, ShoppingCart, User, Menu, X, Star, Shield, Truck } from "lucide-react";
+import { Search, ShoppingCart, User, Menu, X, Star, Shield, Truck, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -65,9 +65,11 @@ export default function Navigation() {
                   placeholder="Search for products, brands, or categories..."
                   className="pl-12 pr-4 py-3 bg-secondary border-0 focus:bg-background focus:ring-2 focus:ring-accent/20 rounded-full"
                 />
+              <Link to="/shop">
                 <Button className="absolute right-1 top-1/2 transform -translate-y-1/2 btn-hero rounded-full px-6">
                   Search
                 </Button>
+              </Link>
               </div>
             </div>
 
@@ -91,9 +93,21 @@ export default function Navigation() {
             {/* Right Side Actions */}
             <div className="flex items-center space-x-3">
               {/* Search Icon - Mobile */}
-              <Button variant="ghost" size="icon" className="lg:hidden">
-                <Search className="w-5 h-5" />
-              </Button>
+              <Link to="/shop">
+                <Button variant="ghost" size="icon" className="lg:hidden">
+                  <Search className="w-5 h-5" />
+                </Button>
+              </Link>
+
+              {/* Wishlist */}
+              <Link to="/wishlist">
+                <Button variant="ghost" size="icon" className="hover-glow relative">
+                  <Heart className="w-5 h-5" />
+                  <span className="absolute -top-1 -right-1 bg-accent text-accent-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium">
+                    2
+                  </span>
+                </Button>
+              </Link>
 
               {/* User Account */}
               <Button variant="ghost" size="icon" className="hover-glow">
@@ -101,14 +115,16 @@ export default function Navigation() {
               </Button>
 
               {/* Shopping Cart */}
-              <Button variant="ghost" size="icon" className="hover-glow relative">
-                <ShoppingCart className="w-5 h-5" />
-                {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-accent text-accent-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium">
-                    {cartCount}
-                  </span>
-                )}
-              </Button>
+              <Link to="/cart">
+                <Button variant="ghost" size="icon" className="hover-glow relative">
+                  <ShoppingCart className="w-5 h-5" />
+                  {cartCount > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-accent text-accent-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium">
+                      {cartCount}
+                    </span>
+                  )}
+                </Button>
+              </Link>
 
               {/* Mobile Menu Toggle */}
               <Button
@@ -130,9 +146,11 @@ export default function Navigation() {
                 placeholder="Search products..."
                 className="pl-12 pr-20 py-3 bg-secondary border-0 rounded-full"
               />
-              <Button className="absolute right-1 top-1/2 transform -translate-y-1/2 btn-hero rounded-full px-4 text-sm">
-                Search
-              </Button>
+              <Link to="/shop">
+                <Button className="absolute right-1 top-1/2 transform -translate-y-1/2 btn-hero rounded-full px-4 text-sm">
+                  Search
+                </Button>
+              </Link>
             </div>
           </div>
         </nav>
